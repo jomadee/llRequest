@@ -1,5 +1,5 @@
 {
-    "name": "llRequest",
+    "name": "lliure/llRequest",
     "description": "Pacote para conexão de rests Http e SOAP",
     "config": {
         "secure-http": false
