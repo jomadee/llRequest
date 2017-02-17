@@ -1,6 +1,6 @@
 <?php
 
-namespace Deferred;
+namespace llRequest;
 
 class Promise {
 

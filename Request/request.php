@@ -1,4 +1,7 @@
 <?php
+namespace llRequest;
+
+use llRequest\Deferred;
 
 /**
  * UsrRequest
@@ -70,7 +73,7 @@ class Request {
     private function run($method, $data){
 
         $dfd = new Deferred();
-        $rps = new \Request\Response();
+        $rps = new Response();
         $method = strtoupper($method);
         $curlOpt = [];
 
@@ -123,7 +126,8 @@ class Request {
         $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
         $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
         $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
-        return "$scheme$user$pass$host$port$path$query$fragment";
+        
+		return $scheme.$user.$pass.$host.$port.$path.$query.$fragment;
     }
 
 

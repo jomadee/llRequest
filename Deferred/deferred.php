@@ -1,8 +1,9 @@
 <?php
 
-use Deferred\Promise;
+namespace llRequest;
+use llRequest\Promise;
 
-class Deferred extends Deferred\Promise {
+class Deferred extends llRequest\Promise {
 
     private $promise;
 
