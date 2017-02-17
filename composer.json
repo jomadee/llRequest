@@ -1,0 +1,11 @@
+{
+    "name": "llRequest",
+    "description": "Pacote para conexão de rests Http e SOAP",
+    "config": {
+        "secure-http": false
+    },
+    "require": {
+        "php": "^5.4 || ^7.0",
+        "another-vendor/package": "1.*"
+    }
+}
