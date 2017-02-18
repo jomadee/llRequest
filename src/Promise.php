@@ -7,17 +7,20 @@ class Promise {
     protected $state = null, $data;
     private $aDone = [], $aFail = [], $aAlways = [];
 
-    public function always($callback){
+    public function always($callback)
+    {
         self::addToList($this->aAlways, $callback);
         return $this;
     }
 
-    private function addToList(&$list, $callback){
+    private function addToList(&$list, $callback)
+    {
         if(is_callable($callback)) $list[] = $callback;
         $this->run();
     }
 
-    protected function run($state = null, $datas = []){
+    protected function run($state = null, $datas = [])
+    {
         $this->state = (($state !== null)? $state: $this->state);
         $this->data = (($state !== null)? $datas: $this->data);
         if($this->state !== null){
@@ -30,18 +33,20 @@ class Promise {
         }
     }
 
-    public function done($callback){
+    public function done($callback)
+    {
         self::addToList($this->aDone, $callback);
         return $this;
     }
 
-    public function fail($callback){
+    public function fail($callback)
+    {
         self::addToList($this->aFail, $callback);
         return $this;
     }
 
-    public function state(){
+    public function state()
+    {
         return $this->state;
     }
-
 }
