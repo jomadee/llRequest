@@ -54,7 +54,7 @@ class Response implements \IteratorAggregate {
 
     public function isError()
     {
-        return ((!isset($this->meta["status"]))? null: (($this->meta["status"] >= 200 && $this->meta["status"] <= 300)));
+        return !((!isset($this->meta["status"]))? null: (($this->meta["status"] >= 200 && $this->meta["status"] < 300)));
     }
 
     public function response(array $response = null)

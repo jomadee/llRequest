@@ -1,5 +1,4 @@
 <?php
-
 namespace llRequest;
 
 class Promise {
