@@ -153,10 +153,30 @@ class Request
                 $dfd->resolve($rps);
 
         } else if ($this->type == 'soap') {
-            $ws = new \SoapClient($this->url, $this->headers);
-            $rps = $ws->{$method}($data[0]);
 
-            $dfd->resolve($rps);
+            try {
+                $ws = new \SoapClient($this->url, $this->headers);
+                $return = $ws->{$method}($data[0]);
+
+                $rps->data($return);
+                $return = explode('|', str_ireplace(array("\n\r", "\n","\r", " "), "|", $ws->__getLastResponseHeaders()));
+
+                $rps->meta($this->url, $return[1]);
+
+                if ($rps->isError())
+                    $dfd->reject($rps);
+                else
+                    $dfd->resolve($rps);
+
+                $dfd->resolve($rps);
+            } catch (\Exception $e){
+
+                $rps->meta($this->url, 500);
+                $rps->data($e->getMessage());
+                $dfd->reject($rps);
+            }
+
+
         }
 
         return $dfd->promise();
