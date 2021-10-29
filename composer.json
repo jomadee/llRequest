@@ -1,6 +1,8 @@
 {
   "name": "lliure/llrequest",
   "description": "Pacote para conexão de rests Http e SOAP",
+  "type": "library",
+  "license": "MIT",
   "require": {
     "php": "^5.3.3 || ^7.0 || ^8.0"
   },
