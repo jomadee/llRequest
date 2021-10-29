@@ -2,7 +2,7 @@
   "name": "lliure/llrequest",
   "description": "Pacote para conexão de rests Http e SOAP",
   "require": {
-    "php": "^5.3.3 || ^7.0"
+    "php": "^5.3.3 || ^7.0 || ^8.0"
   },
   "autoload": {
     "psr-4": {
