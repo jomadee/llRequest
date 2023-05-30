@@ -47,8 +47,7 @@ class Response implements \IteratorAggregate {
         return (string) $this->data;
     }
 
-    public function getIterator()
-    {
+    public function getIterator(): \ArrayIterator{
         return new \ArrayIterator($this->data);
     }
 
