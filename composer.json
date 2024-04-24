@@ -1,6 +1,6 @@
 {
   "name": "lliure/llrequest",
-  "description": "Pacote para conexão de rests Http e SOAP",
+  "description": "A lightweight PHP package for connecting to RESTful HTTP APIs and SOAP services.",
   "type": "library",
   "license": "MIT",
   "require": {
@@ -8,7 +8,8 @@
   },
   "autoload": {
     "psr-4": {
-      "llRequest\\": "./src"
+      "llRequest\\": "./src",
+      "ext-curl": "*"
     }
   }
 }
