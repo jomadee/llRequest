@@ -4,12 +4,12 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": "^5.3.3 || ^7.0 || ^8.0"
+    "php": "^5.3.3 || ^7.0 || ^8.0",
+    "ext-curl": "*"
   },
   "autoload": {
     "psr-4": {
-      "llRequest\\": "./src",
-      "ext-curl": "*"
+      "llRequest\\": "./src"
     }
   }
 }
