@@ -143,6 +143,14 @@ class Request
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
+			// Timeouts para evitar workers PHP-FPM presos em I/O
+			if (!isset($this->curlOpt[CURLOPT_CONNECTTIMEOUT])) {
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+			}
+			if (!isset($this->curlOpt[CURLOPT_TIMEOUT])) {
+				curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+			}
+
 			if ($method != 'GET') {
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
@@ -156,6 +164,7 @@ class Request
 
 			$rps->meta($this->url, curl_getinfo($ch, CURLINFO_HTTP_CODE));
 			$rps->data($return);
+			curl_close($ch);
 
 			if ($rps->isError())
 				$dfd->reject($rps);
