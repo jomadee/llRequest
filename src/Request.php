@@ -161,12 +161,19 @@ class Request
 			}
 
 			$return = curl_exec($ch);
+			$curlErrno = curl_errno($ch);
+			$curlError = curl_error($ch);
 
-			$rps->meta($this->url, curl_getinfo($ch, CURLINFO_HTTP_CODE));
+			$rps->meta(
+				$this->url,
+				curl_getinfo($ch, CURLINFO_HTTP_CODE),
+				$curlErrno > 0,
+				$curlError ?: null
+			);
 			$rps->data($return);
 			curl_close($ch);
 
-			if ($rps->isError())
+			if ($rps->isError() || $curlErrno > 0)
 				$dfd->reject($rps);
 			else
 				$dfd->resolve($rps);

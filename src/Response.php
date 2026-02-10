@@ -6,12 +6,14 @@ class Response implements \IteratorAggregate {
 
     private $meta, $data;
 
-    public function meta($endpoint = null, $status = null)
+    public function meta($endpoint = null, $status = null, $error = false, $message = null)
     {
         if($endpoint !== null){
             $status = (int) $status;
             $this->meta["status"] = ($status >= 100 && $status <= 599) ? $status : 502;
             $this->meta["endpoint"] = $endpoint;
+            $this->meta["error"] = $error;
+            $this->meta["message"] = $message;
             return $this;
         }else
             return $this->meta;
